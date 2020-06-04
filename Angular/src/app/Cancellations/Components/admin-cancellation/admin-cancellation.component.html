@@ -1,0 +1,34 @@
+
+<div class="jumbtron">
+    <h1 class="display-4 text-center"> Cancellation Data  </h1>
+    
+    
+    <div>
+    <table class="table table-dark">
+    
+        <thead style="text-align: left;" class="thead-dark">
+              <tr>
+              <th>Cancellation ID</th>
+              <th>Flight Id</th>
+              <th>Booking Id</th>
+              <th>Date Of Cancellation</th>
+              <th>Refund Amount</th>
+              <th>Action</th>
+              </tr>
+        </thead>  
+            <tbody>
+                <tr *ngFor="let cancellation of cancellationList; let id = index">
+                    <td> {{ cancellation.CancellationId }} </td>
+                    <td> {{ cancellation.FlightId }} </td>
+                    <td> {{ cancellation.BookingId }} </td>
+                    <td> {{ datePipe.transform(cancellation.DateOfCancellation, 'yyyy-MM-dd') }} </td>
+                    <td> {{ cancellation.RefundAmount }} </td>
+                    <td>
+                        <button class=" btn btn-success" (click)="onDeleteClick(id)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+    </table>
+    </div>
+    </div>
+    

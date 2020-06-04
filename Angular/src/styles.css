@@ -1,0 +1,91 @@
+/* You can add global styles to this file, and also import other style files */
+/***************************************************************************************
+Developer: <Ashita Gaur>
+Create Date: <17th May,2020>
+Last Updated Date: <20th May,2020>
+Description:To perform Business logic and accordingly return response to Bookings.
+Task:CRUD with opreation with flight
+***************************************************************************************/
+
+
+html, body { height: 100%; }
+body { margin: 0;
+/* overflow: hidden; Hide scrollbars */
+font-family: Roboto, "Helvetica Neue", sans-serif;
+background: rgba(35,50,102,.05);
+}
+
+/* compmeneet css */
+.container
+{
+ 
+  padding-top: 20px;
+  align-items: center;
+  
+  /* opacity: 0.7;
+ 
+  border-top: 20px solid#3d57b2;
+  border-bottom: 20px solid #8194d4; */
+}
+.text-blue
+{
+  color: #233266;
+  font-weight: 400;
+  font-size: medium;
+}
+.btn-blue{
+  background-color:#8194d4;
+  height: 40px;
+  width: 200px;
+  margin-inline: 40px;
+
+}
+/* compmeneet css  end*/
+
+
+/* Header css */
+
+
+.dark-blue {
+background-color: #233266!important;
+height: 50px;
+font-weight: 100;
+color: whitesmoke;
+margin-left: 74px;
+}
+.sidebar-left{
+  margin-left: 20px;
+  content: "";
+  width: 18px;
+  height: 600px;
+  background: #233266;
+  display: block;
+  position: absolute;
+  z-index: 1;
+  border-radius: 0 0 18px;
+  top: 0;
+  left: 0;
+  /*box-shadow: [inset][horizontal offset][vertical offset][blur radius][spread distance][color];*/
+  box-shadow: 18px -36px 0 #3d57b2, 36px -72px 0 #8194d4;
+}
+/* Header css end */
+.datePickerContainer .mat-datepicker-toggle .mat-icon-button{
+  height: calc(1.5em + 0.75rem)!important; 
+}
+
+
+/* Ashisih */
+/* You can add global styles to this file, and also import other style files */
+
+  /* ----background image */
+  
+  .bg{
+    background-image: url(assets\Images\mountainview.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:  center ;
+    
+    height: 100%;
+    z-index: -1;
+    
+}

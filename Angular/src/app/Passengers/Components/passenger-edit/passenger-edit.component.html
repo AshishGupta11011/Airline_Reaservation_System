@@ -1,0 +1,278 @@
+<div class="jumbtron">
+    <h1 class="display-4 text-center"> Passenger Details </h1>
+    <hr>
+    
+    <div class="col-md-6" >
+        <form [formGroup]="newForm" (ngSubmit)="onEditClick()">
+
+        <!--Booking Id start-->
+            <div class="form-group" >
+            <label for="PassengerId">Passenger Id</label>
+            <input type="text" class="form-control" formControlName="PassengerId">
+            </div>
+        <!--End of Booking Id-->
+
+        <!--Booking Id start-->
+            <div class="form-group" >
+            <label for="bookingId">Booking Id</label>
+            <input type="text" class="form-control" placeholder="Booking ID" formControlName="BookingId" [ngClass]="{
+                'is-valid': newForm.get('BookingId').valid && newForm.get('BookingId').touched,
+                'is-invalid': newForm.get('BookingId').invalid && newForm.get('BookingId').touched
+              }" >
+              <span class="text-danger" *ngIf="newForm.get('BookingId').invalid && newForm.get('BookingId').touched && newForm.get('BookingId').errors.required">Booking ID can't be blank</span>
+              
+            </div>
+        <!--End of Booking Id-->
+        
+        <!--Email Id start-->
+            <div class="form-group">
+                <label for="emailId">Email Id</label>
+                <input type="text" class="form-control" placeholder="Email ID" formControlName="EmailId">
+                <span class="text-danger" *ngIf="newForm.get('EmailId').invalid && newForm.get('EmailId').touched && newForm.get('EmailId').errors.email">Email should be in correct format</span>
+            </div>
+        <!-- End of Email Id -->
+            
+        <!--Name start-->    
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" placeholder="Name" formControlName="Name">
+                <span class="text-danger" *ngIf="newForm.get('Name').invalid && newForm.get('Name').touched && newForm.get('Name').errors.required">Employee Name can't be blank</span>
+                <span class="text-danger" *ngIf="newForm.get('Name').invalid && newForm.get('Name').touched && newForm.get('Name').errors.pattern">Employee Name can contain alphabets, dot (.) and space</span> 
+
+            </div>
+        <!--End of Name-->    
+        
+        <!--Gender start-->  
+            <div class="form-group">
+                 <label for="gender">Gender  </label>
+                 <!--input type="text" class="form-control" placeholder="Gender" formControlName="Gender"-->
+                 <select class="form-control" name="Gender" formControlName="Gender" >
+                      <option value="M">Male</option>
+                      <option value="F">Female</option>
+                  </select>
+                  <span class="text-danger" *ngIf="newForm.get('Gender').invalid && newForm.get('Gender').touched && newForm.get('Gender').errors.required"> Select the gender</span>
+            </div> 
+        <!--End of Gender-->  
+
+        <!--Name Age start-->  
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="text" class="form-control" placeholder="Age" formControlName="Age">
+                <span class="text-danger" *ngIf="newForm.get('Age').invalid && newForm.get('Age').touched && newForm.get('Name').errors.required">Age must be greater then or equal to 18</span>
+            </div>
+        <!--End of Age-->     
+
+        <!-- Nationality start-->  
+            <div class="form-group">
+                <label for="nationality">Nationality</label>
+                <!--input type="text" class="form-control" placeholder="Nationality" formControlName="Nationality"-->
+                <select class="form-control" name="Nationality" formControlName="Nationality" >
+                    <option value="">-- select one --</option>
+                    
+                    <option value="afghan">Afghan</option>
+  <option value="alb">Albanian</option>
+  <option value="alg">Algerian</option>
+  <option value="ame">American</option>
+  <option value="and">Andorran</option>
+  <option value="ang">Angolan</option>
+  <option value="ant">Antiguans</option>
+  <option value="arg">Argentinean</option>
+  <option value="arm">Armenian</option>
+  <option value="aus">Australian</option>
+  <option value="aus">Austrian</option>
+  <option value="aze">Azerbaijani</option>
+  <option value="bah">Bahamian</option>
+  <option value="bah">Bahraini</option>
+  <option value="ban">Bangladeshi</option>
+  <option value="bar">Barbadian</option>
+  <option value="bar">Barbudans</option>
+  <option value="bat">Batswana</option>
+  <option value="bel">Belarusian</option>
+  <option value="bel">Belgian</option>
+  <option value="bel">Belizean</option>
+  <option value="ben">Beninese</option>
+  <option value="bhu">Bhutanese</option>
+  <option value="bol">Bolivian</option>
+  <option value="bos">Bosnian</option>
+  <option value="bra">Brazilian</option>
+  <option value="bri">British</option>
+  <option value="bru">Bruneian</option>
+  <option value="bul">Bulgarian</option>
+  <option value="bur">Burkinabe</option>
+  <option value="bur">Burmese</option>
+  <option value="bur">Burundian</option>
+  <option value="cam">Cambodian</option>
+  <option value="cam">Cameroonian</option>
+  <option value="can">Canadian</option>
+  <option value="cap">Cape Verdean</option>
+  <option value="cen">Central African</option>
+  <option value="chad">Chadian</option>
+  <option value="chi">Chilean</option>
+  <option value="chi">Chinese</option>
+  <option value="col">Colombian</option>
+  <option value="com">Comoran</option>
+  <option value="con">Congolese</option>
+  <option value="cos">Costa Rican</option>
+  <option value="cro">Croatian</option>
+  <option value="cub">Cuban</option>
+  <option value="cyp">Cypriot</option>
+  <option value="cze">Czech</option>
+  <option value="dan">Danish</option>
+  <option value="dji">Djibouti</option>
+  <option value="dom">Dominican</option>
+  <option value="dut">Dutch</option>
+  <option value="eas">East Timorese</option>
+  <option value="ecu">Ecuadorean</option>
+  <option value="egy">Egyptian</option>
+  <option value="emi">Emirian</option>
+  <option value="equ">Equatorial Guinean</option>
+  <option value="eri">Eritrean</option>
+  <option value="est">Estonian</option>
+  <option value="eth">Ethiopian</option>
+  <option value="fij">Fijian</option>
+  <option value="fil">Filipino</option>
+  <option value="fin">Finnish</option>
+  <option value="fre">French</option>
+  <option value="gab">Gabonese</option>
+  <option value="gam">Gambian</option>
+  <option value="geo">Georgian</option>
+  <option value="ger">German</option>
+  <option value="gha">Ghanaian</option>
+  <option value="gre">Greek</option>
+  <option value="gre">Grenadian</option>
+  <option value="gua">Guatemalan</option>
+  <option value="gui">Guinea-Bissauan</option>
+  <option value="gui">Guinean</option>
+  <option value="guy">Guyanese</option>
+  <option value="hai">Haitian</option>
+  <option value="her">Herzegovinian</option>
+  <option value="hon">Honduran</option>
+  <option value="hun">Hungarian</option>
+  <option value="ice">Icelander</option>
+  <option value="ind">Indian</option>
+  <option value="ind">Indonesian</option>
+  <option value="ira">Iranian</option>
+  <option value="ira">Iraqi</option>
+  <option value="iri">Irish</option>
+  <option value="isr">Israeli</option>
+  <option value="ita">Italian</option>
+  <option value="ivo">Ivorian</option>
+  <option value="jam">Jamaican</option>
+  <option value="jap">Japanese</option>
+  <option value="jor">Jordanian</option>
+  <option value="kaz">Kazakhstani</option>
+  <option value="ken">Kenyan</option>
+  <option value="kit">Kittian and Nevisian</option>
+  <option value="kuw">Kuwaiti</option>
+  <option value="kyr">Kyrgyz</option>
+  <option value="lao">Laotian</option>
+  <option value="lat">Latvian</option>
+  <option value="leb">Lebanese</option>
+  <option value="lib">Liberian</option>
+  <option value="lib">Libyan</option>
+  <option value="lie">Liechtensteiner</option>
+  <option value="lit">Lithuanian</option>
+  <option value="lux">Luxembourger</option>
+  <option value="mac">Macedonian</option>
+  <option value="mal">Malagasy</option>
+  <option value="mal">Malawian</option>
+  <option value="mal">Malaysian</option>
+  <option value="mal">Maldivan</option>
+  <option value="mal">Malian</option>
+  <option value="mal">Maltese</option>
+  <option value="mar">Marshallese</option>
+  <option value="mau">Mauritanian</option>
+  <option value="mau">Mauritian</option>
+  <option value="mex">Mexican</option>
+  <option value="mic">Micronesian</option>
+  <option value="mol">Moldovan</option>
+  <option value="mon">Monacan</option>
+  <option value="mon">Mongolian</option>
+  <option value="mor">Moroccan</option>
+  <option value="mos">Mosotho</option>
+  <option value="mot">Motswana</option>
+  <option value="moz">Mozambican</option>
+  <option value="nam">Namibian</option>
+  <option value="nau">Nauruan</option>
+  <option value="nep">Nepalese</option>
+  <option value="new">New Zealander</option>
+  <option value="ni">Ni-Vanuatu</option>
+  <option value="nic">Nicaraguan</option>
+  <option value="nig">Nigerien</option>
+  <option value="nor">North Korean</option>
+  <option value="nor">Northern Irish</option>
+  <option value="nor">Norwegian</option>
+  <option value="oma">Omani</option>
+  <option value="pak">Pakistani</option>
+  <option value="pal">Palauan</option>
+  <option value="pan">Panamanian</option>
+  <option value="pap">Papua New Guinean</option>
+  <option value="par">Paraguayan</option>
+  <option value="per">Peruvian</option>
+  <option value="pol">Polish</option>
+  <option value="por">Portuguese</option>
+  <option value="qat">Qatari</option>
+  <option value="rom">Romanian</option>
+  <option value="rus">Russian</option>
+  <option value="rwa">Rwandan</option>
+  <option value="sai">Saint Lucian</option>
+  <option value="sal">Salvadoran</option>
+  <option value="sam">Samoan</option>
+  <option value="san">San Marinese</option>
+  <option value="sao">Sao Tomean</option>
+  <option value="sau">Saudi</option>
+  <option value="sco">Scottish</option>
+  <option value="sen">Senegalese</option>
+  <option value="ser">Serbian</option>
+  <option value="sey">Seychellois</option>
+  <option value="sie">Sierra Leonean</option>
+  <option value="sin">Singaporean</option>
+  <option value="slo">Slovakian</option>
+  <option value="slo">Slovenian</option>
+  <option value="sol">Solomon Islander</option>
+  <option value="som">Somali</option>
+  <option value="sou">South African</option>
+  <option value="sou">South Korean</option>
+  <option value="spa">Spanish</option>
+  <option value="sri">Sri Lankan</option>
+  <option value="sud">Sudanese</option>
+  <option value="sur">Surinamer</option>
+  <option value="swa">Swazi</option>
+  <option value="swe">Swedish</option>
+  <option value="swi">Swiss</option>
+  <option value="syr">Syrian</option>
+  <option value="tai">Taiwanese</option>
+  <option value="taj">Tajik</option>
+  <option value="tan">Tanzanian</option>
+  <option value="tha">Thai</option>
+  <option value="tog">Togolese</option>
+  <option value="ton">Tongan</option>
+  <option value="tri">Trinidadian or Tobagonian</option>
+  <option value="tun">Tunisian</option>
+  <option value="tur">Turkish</option>
+  <option value="tuv">Tuvaluan</option>
+  <option value="uga">Ugandan</option>
+  <option value="ukr">Ukrainian</option>
+  <option value="uru">Uruguayan</option>
+  <option value="uzb">Uzbekistani</option>
+  <option value="ven">Venezuelan</option>
+  <option value="zam">Zambian</option>
+  <option value="zim">Zimbabwean</option>
+                    
+                </select>
+                <span class="text-danger" *ngIf="newForm.get('Nationality').invalid && newForm.get('Nationality').touched && newForm.get('Nationality').errors.required">Select the Nationality</span>
+                
+            </div>
+        <!--End of Nationality-->  
+
+
+        <!--Add Button start-->  
+            <div class="text-center">
+                <button type="submit" class="btn btn-success">Update</button>
+              </div>
+        <!--End of Button-->  
+
+        </form>
+        </div>
+
+</div>

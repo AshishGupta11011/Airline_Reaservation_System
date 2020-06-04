@@ -1,0 +1,12 @@
+
+<div *ngIf = "isAdmin">
+
+    <div class="p-5 mt-5 mx-auto float-left">
+        <a  routerLink = "/Customerslist"><h4>List Of Customers</h4></a><br>
+        <a routerLink = "/Cancellationsadmin"><h4>Cancellations List</h4></a>
+    </div>
+</div>
+<div  *ngIf = "!isAdmin">
+<div *ngIf = "!isAdmin">
+   <h1 class="text-center mt-5">Only For Admin User</h1> 
+</div>

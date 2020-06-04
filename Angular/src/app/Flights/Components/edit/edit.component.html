@@ -1,0 +1,53 @@
+<div class="container" style="margin: 50px;">
+  <form [formGroup]="EditForm" (ngSubmit)="onSubmit()">
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="FlightID">Flight ID</label>
+      <input type="text" formControlName="FlightId" value="{{FlightId}}" [(ngModel)]="FlightId" class="form-control"
+        readonly id=""><br>
+      <div class="form-group">
+        <label for="FlightName">Flight Name</label>
+        <input type="text" formControlName="FlightName" class="form-control" placeholder="Flight Name" id="FlightName">
+        <span *ngIf="!EditForm.get('FlightName').valid && EditForm.get('FlightName').touched" class="help-block"
+          style="color:red;"> Please Enter Flight Name </span>
+      </div>
+      <div class="form-group">
+        <label for="Source">Source</label>
+        <input type="text" formControlName="Source" class="form-control" placeholder="Source">
+        <span *ngIf="!EditForm.get('Source').valid && EditForm.get('Source').touched" class="help-block"
+          style="color:red;"> Please Enter Source </span>
+      </div>
+      <div class="form-group">
+        <label for="Destination">Destination</label>
+        <input type="text" formControlName="Destination" class="form-control" placeholder="Destination">
+        <span *ngIf="!EditForm.get('Destination').valid && EditForm.get('Destination').touched" class="help-block"
+          style="color:red;"> Please Enter Destination </span>
+      </div>
+      <div class="form-group">
+        <label for="AvailableSeats">Available Seats</label>
+        <input type="number" formControlName="AvailableSeats" class="form-control" placeholder="Available Seats">
+        <span *ngIf="!EditForm.get('AvailableSeats').valid && EditForm.get('AvailableSeats').touched" class="help-block"
+          style="color:red;"> Please Enter Available Seats </span>
+      </div>
+      <div class="form-group">
+        <label for="BaggageLimit">BaggageLimit</label>
+        <input type="number" formControlName="BaggageLimit" class="form-control" placeholder="Baggage Limit">
+        <span *ngIf="!EditForm.get('BaggageLimit').valid && EditForm.get('BaggageLimit').touched" class="help-block"
+          style="color:red;"> Please Enter BaggageLimit </span>
+      </div>
+      <div class="form-group">
+        <label for="ArrivalTime">Arrival Time</label>
+        <input type="text" formControlName="ArrivalTime" class="form-control" placeholder="Arrival Time">
+        <span *ngIf="!EditForm.get('ArrivalTime').valid && EditForm.get('ArrivalTime').touched" class="help-block"
+          style="color:red;"> Please Enter Arrival Time </span>
+      </div>
+      <div class="form-group">
+        <label for="DepartureTime">Departure Time</label>
+        <input type="text" formControlName="DepartureTime" class="form-control" placeholder="Departure Time">
+        <span *ngIf="!EditForm.get('DepartureTime').valid && EditForm.get('DepartureTime').touched" class="help-block"
+          style="color:red;"> Please Enter Departure Time </span>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" style="margin: 20px;float: right;">Update</button>
+  </form>
+</div>

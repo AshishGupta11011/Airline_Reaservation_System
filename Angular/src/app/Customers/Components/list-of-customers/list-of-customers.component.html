@@ -1,0 +1,20 @@
+<div class="container w-50 mx-auto ml-5 shadow"  style="margin-top: 100px;">
+    <h3 class="mb-2 mx-auto">Customers List</h3>
+    <input class="form-control" id="myInput" type="text" placeholder="Search..">
+    <br>
+    <table class="table table-bordered" style="background-color:transparent;">
+        <thead>
+            <th>Name</th>
+            <th>Email</th>
+        </thead>
+        <tbody id="myTable">
+            <tr *ngFor="let customer of customerList">
+                <td>{{customer.Name}}</td>
+                <td>{{customer.Email}}</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+   

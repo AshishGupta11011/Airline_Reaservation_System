@@ -1,0 +1,48 @@
+<div class="jumbtron">
+<h1 class="display-4 text-center"> Passengers  </h1>
+
+
+<div class="col-lg-6">
+<table class="table">
+
+    <thead style="text-align: center;" class="thead-dark">
+          <tr>
+          <th>PassengerId</th>
+          <th>BookingId</th>
+          <th>EmailId</th>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>Age</th>
+          <th>Nationality</th>
+          <th colspan="2">Action</th>
+          </tr>
+    </thead>
+        <tbody>
+            <tr *ngFor="let passenger of passengerList; let i = index">
+                <td>{{ passenger['PassengerId'] }}</td>
+                <td>{{ passenger['BookingId'] }}</td>
+                <td>{{ passenger['EmailId'] }}</td>
+                <td>{{ passenger['Name'] }}</td>
+                <td>{{ passenger['Gender'] }}</td>
+                <td>{{ passenger['Age'] }}</td>
+                <td>{{ passenger['Nationality'] }}</td>
+
+                <td>
+                    <button class=" btn btn-success" (click)="onEditClick(i)">Edit</button>
+                </td>
+                <td>
+                    <button class=" btn btn-success" (click)="onDeleteClick(i)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    
+</table>
+<div>
+    
+    <button class="btn btn-primary" routerLink ='/AddPassenger'>Add Passenger</button>
+</div>
+
+</div>
+
+</div>
+

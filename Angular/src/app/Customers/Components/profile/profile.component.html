@@ -1,0 +1,148 @@
+<!-- //-----------------------------------------------------------------------------------------
+// Developer    :  ASHISH GUPTA
+// File Name    :  profile.component.cs
+// Create Date  :  <17th May,2020>
+// Last Updated :  <20th May,2020>
+// Description  :  shows the customer details And user can update their details And delete their Account
+// ------------------------------------------------------------------------------------------ -->
+
+
+<div class="container-fluid ">
+    <!-- {{userform.value | json}} -->
+    <form  #userform="ngForm" novalidate (ngSubmit)="onUpdate()">
+        <!-- {{customerModel | json}} -->
+        <div class="row">
+            <!-- {{customerModel | json}} -->
+            <div  class=" card mx-auto rounded-lg border border-success shadow-lg  border-top-0 mt-1 bg-light text-dark"
+                style="width: 800px">
+
+                <div class="row">
+                    <div class="col-8 card-body w-50  " style="border-right-style: groove;">
+
+
+
+
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text"  maxlength="30"  name="name" #name="ngModel" class="form-control form-control-sm"
+                                [class.is-invalid]="name.invalid && name.touched" required
+                                [(ngModel)]="customerModel.Name">
+                            <small class="text-danger" [class.d-none]="name.valid || name.untouched">invalid
+                                Name</small>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="mt-2 " for="email">Email:</label>
+                            <input disabled style="background-color: grey;color: honeydew;" type="text" name="email"
+                                pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" #email="ngModel"
+                                class="form-control form-control-sm" [class.is-invalid]="email.invalid && email.touched"
+                                required [(ngModel)]="customerModel.Email">
+                            <div *ngIf="email.errors && email.touched">
+                                <small class="text-danger" *ngIf="email.errors.pattern">pattern is wrong</small>
+                                <small class="text-danger" *ngIf="email.errors.required">email is required</small>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="mt-2" for="password">Password:</label>
+                            <input maxlength="15"  minlength= "5" type="password" name="password" #password="ngModel"
+                                class="form-control form-control-sm"
+                                [class.is-invalid]="password.invalid && password.touched" required
+                                [(ngModel)]="customerModel.Pwd">
+                            <small class="text-danger" [class.d-none]="password.valid || password.untouched">invalid
+                                Password</small>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="mt-2" for="dob">DateOfBirth:</label>
+                            <input type="date"   max="{{today | date:'yyyy-MM-dd'}}"  name="dob" #dob="ngModel" class="form-control form-control-sm"
+                                [class.is-invalid]="dob.invalid && dob.touched" required
+                              [ngModel]="customerModel.DOB | date:'yyyy-MM-dd'"
+                                (ngModelChange)="customerModel.DOB = $event">
+                            <small class="text-danger" [class.d-none]="dob.valid || dob.untouched">invalid
+                                Dateofbirth</small>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="mt-2" for="balance">WalletBalance:</label>
+                            <input type="number" name="balance" #balance="ngModel"  pattern="^[0-9]{1,20}$"
+                                class=" form-control form-control-sm"
+                                [class.is-invalid]="balance.invalid && balance.touched" required
+                                [(ngModel)]="customerModel.WalletBalance">
+                            <small class="text-danger" [class.d-none]="balance.valid || balance.untouched">Max
+                                amount limit exceeded</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="mt-2" for="phoneno">Phone No:</label>
+                            <input type="number" name="phoneno" #phoneno="ngModel" pattern="^\d{10}$"
+                                class="form-control form-control"
+                                [class.is-invalid]="phoneno.invalid && phoneno.touched" required
+                                [(ngModel)]="customerModel.PhoneNo">
+                            <small class="text-danger" [class.d-none]="phoneno.valid || phoneno.untouched">invalid
+                                phoneno</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="mt-2" for="address">Address:</label>
+                            <input type="text" name="address" #address="ngModel" class="form-control form-control"
+                                [class.is-invalid]="address.invalid && address.touched" required
+                                [(ngModel)]="customerModel.ResidingAddress">
+                            <small class="text-danger" [class.d-none]="address.valid || address.untouched">invalid
+                                Address</small>
+                        </div>
+
+
+                    </div>
+                    <div  class="col mx-auto" style="background-color:gainsboro;">
+                        
+                        <i class="material-icons m-2 pt-3 " style="font-size:200px;color:rgb(55, 56, 70)">person_pin</i>
+                        <!-- <img class="pt-4 rounded-circle" src="\assets\images\User.jpg" alt="profile"> -->
+                        <h1 class="mt-3 ml-3">My Profile</h1>
+                        <div style="margin-top: 80px;margin-left:30px;">
+                            <div>
+                                <button type="submit" [disabled]="userform.form.invalid " class="btn btn-primary">Update
+                                    Account</button>
+                            </div>
+
+                            <div style="margin-top:100px;">
+                                <button type="button" class="btn btn-danger " data-toggle="modal" data-target="#exampleModal">Delete
+                                    Account</button>
+                            </div>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Are You Sure?</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            You want to delete your Account
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">NO</button>
+                                           <button type="button"
+                                                    class="btn btn-primary" data-dismiss="modal" (click) = "onDelete()">YES</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,70 @@
+<!-- //-----------------------------------------------------------------------------------------
+// Developer    :  ASHISH GUPTA
+// File Name    :  login-customer.html.cs
+// Create Date  :  <17th May,2020>
+// Last Updated :  <20th May,2020>
+// Description  :  Shows the Login UI 
+// ------------------------------------------------------------------------------------------ -->
+
+
+<!-- <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
+
+    <ul class="navbar-nav mx-auto">
+        <li>
+            <h1>OARS Airline</h1>
+        </li>
+        <li> <a class="navbar-brand" href="#">
+                <img style='height: 50px;width: 80px;' src="\assets\Images\Airline.png" alt="Airline">
+            </a>
+        </li>
+    </ul>
+    <ul class="navbar-nav float-left">
+        <li class="nav-item active ">
+            <a class="nav-link "  routerLink = '/login' routerLinkActive = 'Active'>Login</a>
+        </li>
+        <li class="nav-item active ">
+            <a class="nav-link "  routerLink = '/booking' routerLinkActive = 'Active'>Book Ticket</a>
+        </li>
+    </ul>
+</nav> -->
+<div class="row " style="margin: 100px;">
+    <div class="column mx-auto">
+        <div class="card border-primary shadow bg-white">
+            <div class="card header ">
+                <img class="card-img-top w-25 h-25  mx-auto" src="/assets/images/User.jpg" alt="User">
+            </div>
+            <div class="card-body">
+                <form #userform='ngForm'>
+                    <h4 class="text-center ">Login</h4>
+                    <div class="form-group">
+
+                        <label for="email">Email:</label>
+                        <input class="form-control " name="email" #email='ngModel' type="text"
+                            pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
+                            [class.is-invalid]="email.invalid && email.touched" required [(ngModel)]='UserCred.Email'>
+                        <!-- <small class="text-danger" [class.d-none]="email.untouched || email.valid">Invalid
+                            Username</small> -->
+                        <div *ngIf="email.errors && email.touched">
+                            <small class="text-danger" *ngIf="email.errors.pattern">pattern is wrong</small>
+                            <small class="text-danger" *ngIf="email.errors.required">email is required</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input class="form-control" name="password" #password="ngModel" type="password"
+                            [class.is-invalid]="password.invalid && password.touched" required
+                            [(ngModel)]='UserCred.Password'>
+                        <small class="text-danger" [class.d-none]="password.valid || password.untouched">Invalid
+                            password</small>
+                    </div>
+
+                    <button [disabled]="userform.form.invalid" type="submit" class=" btn btn-primary mx-auto" (click) = "onLogin()">Login</button>
+
+                </form>
+            </div>
+            <div class="crad-footer" style="background-color:#e2e2e2">
+                <h6 class="text-center" style="color:black;">New User? <a  routerLink = '/Register' routerLinkActive = 'Active'>SignUp</a></h6>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="container" style="margin: 50px;">
+
+
+    <h2 class="text-center">Add Flight</h2>
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+        <div class="form-group row">
+            <!-- <label for="Flightname">Flight name</label>
+            <input type="text" ngModel name="Flightname" class="form-control" placeholder="Flight name" name=""><br> -->
+            <div class="form-group col-md-3">
+                <label for="FlightName">Flight Name</label>
+                <input type="text" formControlName="FlightName" class="form-control" placeholder="Flight Name"
+                    name="FlightName">
+                <!-- <span *ngIf="!addForm.get('FlightName').invalname && addForm.get('FlightName').touched" class="help-block"
+                    style="color:red;"> Please Enter Flight Name </span> -->
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Source">Source</label>
+                <input type="text" formControlName="Source" class="form-control" placeholder="Source" name="Source">
+                <!-- <span *ngIf="!addForm.get('Source').invalname && addForm.get('Source').touched" class="help-block"
+                    style="color:red;"> Please Enter Source </span> -->
+            </div>
+            <div class="form-group col-md-3">
+                <label for="Destination">Destination</label>
+             <input type="text" formControlName="Destination" class="form-control" placeholder="Destination" name="Destination">
+                <!-- <span *ngIf="!addForm.get('Destination').invalname && addForm.get('Destination').touched"
+                    class="help-block" style="color:red;"> Please Enter Destination </span> -->
+            </div>
+            <div class="form-group col-md-3">
+                <label for="AvailableSeats">Available Seats</label>
+                <input type="number" formControlName="AvailableSeats" class="form-control"
+                    placeholder="Available Seats" name="AvailableSeats">
+                <!-- <span *ngIf="!addForm.get('AvailableSeats').invalname && addForm.get('AvailableSeats').touched"
+                    class="help-block" style="color:red;"> Please Enter Available Seats </span> -->
+            </div>
+            <div class="form-group col-md-3">
+                <label for="BaggageLimit">BaggageLimit</label>
+                <input type="number" formControlName="BaggageLimit" class="form-control" placeholder="Baggage Limit" name="BaggageLimit">
+                <!-- <span *ngIf="!addForm.get('BaggageLimit').invalname && addForm.get('BaggageLimit').touched"
+                    class="help-block" style="color:red;"> Please Enter BaggageLimit </span> -->
+            </div>
+            <div class="form-group col-md-3">
+                <label for="ArrivalTime">Arrival Time</label>
+                <input type="datetime-local" formControlName="ArrivalTime" class="form-control"
+                    placeholder="Arrival Time" name="ArrivalTime">
+                <!-- <span *ngIf="!addForm.get('ArrivalTime').invalname && addForm.get('ArrivalTime').touched"
+                    class="help-block" style="color:red;"> Please Enter Arrival Time </span> -->
+            </div>
+            <div class="form-group col-md-3">
+                <label for="DepartureTime">Departure Time</label>
+                <input type="datetime-local" formControlName="DepartureTime" class="form-control"
+                    placeholder="Departure Time" name="DepartureTime">
+                <!-- <span *ngIf="!addForm.get('DepartureTime').invalname && addForm.get('DepartureTime').touched"
+                    class="help-block" style="color:red;"> Please Enter Departure Time </span> -->
+            </div>
+            <div class="form-group col-md-3">
+                <button type="submit" class="btn btn-primary btn-lg btn-block" style="margin-top: 20px;"
+                    (click)="onSubmit()">AddFlights</button>
+
+            </div>
+        </div>
+    </form>
+</div>

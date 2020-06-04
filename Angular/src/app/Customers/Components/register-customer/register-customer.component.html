@@ -1,0 +1,96 @@
+<!-- //-----------------------------------------------------------------------------------------
+// Developer    :  ASHISH GUPTA
+// File Name    :  register-component.component.cs
+// Create Date  :  <17th May,2020>
+// Last Updated :  <20th May,2020>
+// Description  :  shows the form to fill customer details to create account
+// ------------------------------------------------------------------------------------------ -->
+
+
+<!-- <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
+
+    <ul class="navbar-nav mx-auto">
+        <li>
+            <h1>OARS Airline</h1>
+        </li>
+        <li> <a class="navbar-brand" href="#">
+                <img style='height: 50px;width: 80px;' src="\assets\Images\Airline.png" alt="Airline">
+            </a>
+        </li>
+    </ul>
+    <ul class="navbar-nav float-left">
+        <li class="nav-item active ">
+            <a class="nav-link "  routerLink = '/login' routerLinkActive = 'Active'>Login</a>
+        </li>
+
+    </ul>
+</nav> -->
+<div class="container-fluid " >
+    
+       <!-- {{customerModel | json}} -->
+       <div  class=" card mx-auto w-50  rounded-lg border border-success shadow  border-top-0 mt-1 mb-3">
+           <div class="card-header bg-primary">
+               <h1>Create Account</h1>
+           </div>
+           
+           <div class="card-body  ">
+<form #userform = "ngForm" novalidate (ngSubmit)=CreateCust() >
+    
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" name="name" #name = "ngModel" class="form-control form-control-sm"  [class.is-invalid] = "name.invalid && name.touched" required [(ngModel)] = "customerModel.Name">
+        <small class="text-danger" [class.d-none] = "name.valid || name.untouched">invalid Name</small>
+    </div>
+
+
+    <div class="form-group">
+        <label class="mt-1"  for="email">Email:</label>
+        <input type="text" name="email"  pattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  #email = "ngModel" class="form-control form-control-sm"  [class.is-invalid] = "email.invalid && email.touched" required [(ngModel)] = "customerModel.Email">
+        <div *ngIf = "email.errors && email.touched">
+            <small class="text-danger" *ngIf = "email.errors.pattern">pattern is wrong</small> 
+            <small class="text-danger" *ngIf = "email.errors.required">email is required</small>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="mt-1"  for="password">Password:</label>
+         <input type="password" name="password" #password = "ngModel" class="form-control form-control-sm"  [class.is-invalid] = "password.invalid && password.touched" required [(ngModel)] = "customerModel.Pwd">
+        <small class="text-danger" [class.d-none] = "password.valid || password.untouched">invalid Password</small>
+    </div>
+
+ 
+       <div class="form-group">
+        <label class="mt-1" for="dob">DateOfBirth:</label>
+        <input type="date" name="dob" #dob = "ngModel" class="form-control form-control-sm"  [class.is-invalid] = "dob.invalid && dob.touched" required [(ngModel)] = "customerModel.DOB">
+        <small class="text-danger" [class.d-none] = "dob.valid || dob.untouched">invalid Dateofbirth</small>
+    </div>
+
+
+        <div class="form-group">
+        <label class="mt-2" for="balance">WalletBalance:</label>
+        <input type="number" name="balance" #balance = "ngModel" pattern = "^[1-9]\d*$" class="form-control form-control-sm"  [class.is-invalid] = "balance.invalid && balance.touched" required [(ngModel)] = "customerModel.WalletBalance">
+        <small class="text-danger" [class.d-none] = "balance.valid || balance.untouched">invalid Amount</small>
+    </div>
+
+    <div class="form-group">
+        <label class="mt-2" for="address">Address:</label>
+        <input type="text" name="address" #address = "ngModel" class="form-control form-control-sm"  [class.is-invalid] = "address.invalid && address.touched" required [(ngModel)] = "customerModel.ResidingAddress">
+        <small class="text-danger" [class.d-none] = "address.valid || address.untouched">invalid Address</small>
+    </div>
+
+    <div class="form-group">
+        <label class="mt-2" for="phoneno">Phone No:</label>
+        <input type="number" name="phoneno" #phoneno = "ngModel"  class="form-control form-control-sm"  [class.is-invalid] = "phoneno.invalid && phoneno.touched" required [(ngModel)] = "customerModel.PhoneNo">
+        <small class="text-danger" [class.d-none] = "phoneno.valid || phoneno.untouched">invalid Phone No</small>
+    </div>
+
+    <div class=" mx-auto" style="width: 300px;">
+        <button type="submit" [disabled]="userform.form.invalid " class="btn btn-primary" >Create Account</button>
+    </div>
+</form>
+
+</div>
+</div> 
+</div>
+
