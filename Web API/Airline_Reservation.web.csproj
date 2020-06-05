@@ -135,11 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Airline_Reservation_SQL.sql" />
-    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="index.html" />
-    <Content Include="main-es2015.js" />
-    <Content Include="main-es5.js" />
     <Content Include="Models\AirLineModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>AirLineModel.edmx</DependentUpon>
@@ -150,15 +146,6 @@
       <DependentUpon>AirLineModel.edmx</DependentUpon>
       <LastGenOutput>AirLineModel.cs</LastGenOutput>
     </Content>
-    <Content Include="polyfills-es2015.js" />
-    <Content Include="polyfills-es5.js" />
-    <Content Include="runtime-es2015.js" />
-    <Content Include="runtime-es5.js" />
-    <Content Include="scripts.js" />
-    <Content Include="styles-es2015.js" />
-    <Content Include="styles-es5.js" />
-    <Content Include="vendor-es2015.js" />
-    <Content Include="vendor-es5.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -234,8 +221,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="main-es2015.js.map" />
-    <Content Include="main-es5.js.map" />
     <EntityDeploy Include="Models\AirLineModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>AirLineModel.Designer.cs</LastGenOutput>
@@ -244,15 +229,6 @@
       <DependentUpon>AirLineModel.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
-    <Content Include="polyfills-es2015.js.map" />
-    <Content Include="polyfills-es5.js.map" />
-    <Content Include="runtime-es2015.js.map" />
-    <Content Include="runtime-es5.js.map" />
-    <Content Include="scripts.js.map" />
-    <Content Include="styles-es2015.js.map" />
-    <Content Include="styles-es5.js.map" />
-    <Content Include="vendor-es2015.js.map" />
-    <Content Include="vendor-es5.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
