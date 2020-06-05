@@ -46,7 +46,7 @@
                   'is-valid': newForm.get('Source').valid && newForm.get('Source').touched,
                   'is-invalid': newForm.get('Source').invalid && newForm.get('Source').touched
                 }"> -->
-            <input id="sourceSearch" disabled style="background-color: lightgrey;" class="searchBar " placeholder="Flying From" type="text" formControlName="Source"
+            <input id="sourceSearch" class="searchBar " placeholder="Flying From" type="text" formControlName="Source"
               value="" (click)="setArgsTrue('from')">
             <div *ngIf=" newForm.value.Source && newForm.value.Source.length!=0 && filterSourceArgs"
               class="searchResultDiv">
@@ -68,7 +68,7 @@
                   'is-valid': newForm.get('Destination').valid && newForm.get('Destination').touched,
                   'is-invalid': newForm.get('Destination').invalid && newForm.get('Destination').touched               
                 }"> -->
-            <input id="destSearch" disabled style="background-color: lightgrey;" class="searchBar " placeholder="Flying To" type="text" formControlName="Destination"
+            <input id="destSearch" class="searchBar " placeholder="Flying To" type="text" formControlName="Destination"
               value="" (click)="setArgsTrue('')">
             <div *ngIf=" newForm.value.Destination && newForm.value.Destination.length!=0 && filterDestArgs"
               class="searchResultDiv">
@@ -127,6 +127,8 @@
           <button class="btn btn-blue text-white" [disabled]="!newForm.valid" (click)="onSubmitClick()">Confirm
             Booking</button>
         </div>
+
+
         <!-- is-valid    : green
             is-invalid : red -->
 
@@ -152,11 +154,11 @@
               name="bookingId" [(ngModel)]="searchBookingId">
           </div>
           <div class="col-md-3">
-            <input disabled readonly type="text" class="form-control" placeholder="Enter Origin">
+            <input readonly type="text" class="form-control" placeholder="Enter Origin">
           </div>
           <!-- Search by date -->
           <div class="col-md-3 ">
-            <input disabled readonly class="form-control" placeholder="Enter Date" name="DateOfJourney">
+            <input readonly class="form-control" placeholder="Enter Date" name="DateOfJourney">
           </div>
           <div class="text-center col-md-3">
             <button class="btn btn-blue text-white" [disabled]="checkButton()" (click)="onFindStatusClick()">Find
@@ -181,7 +183,6 @@
             <th>DateOfJourney</th>
             <th>NoOfSeats</th>
             <th>Ticket Fare</th>
-            <th>Ticket Status</th>
             <!-- <th>CustomerId</th> -->
           </tr>
         </thead>
@@ -196,7 +197,6 @@
             <td>{{book.DateOfJourney | date: 'MM/dd/yyyy'}}</td>
             <td>{{book.NoOfSeats}}</td>
             <td>{{book.TicketFare}}</td>
-            <td>{{book.TicketStatus}}</td>
             <!-- <td>{{book.CustomerId}}</td> -->
           </tr>
         </tbody>
@@ -206,7 +206,7 @@
           <button class="btn btn-blue text-white" (click)="updateClickHandler()">Update </button>
         </div>
         <div class="text-center col-md-3">
-          <button class="btn btn-blue text-white" (click)="onCancelClick()">Cancel Ticket</button>
+          <button class="btn btn-blue text-white">Cancel</button>
         </div>
       </div>
     </div>
@@ -338,7 +338,9 @@
               <th>DateOfBooking</th>
               <th>DateOfJourney</th>
               <th>NoOfSeats</th>
-              <th>Ticket Fare</th>
+              <!-- <th>Ticket Fare</th> -->
+              <th>Flight Status</th>
+
               <!-- <th>CustomerId</th> -->
             </tr>
           </thead>
@@ -352,7 +354,8 @@
               <td>{{book.DateOfBooking | date: 'MM/dd/yyyy'}}</td>
               <td>{{book.DateOfJourney | date: 'MM/dd/yyyy'}}</td>
               <td>{{book.NoOfSeats}}</td>
-              <td>{{book.TicketFare}}</td>
+              <!-- <td>{{book.TicketFare}} </td> -->
+              <td>{{book.TicketStatus}} (Not Cancelled)</td>
               <!-- <td>{{book.CustomerId}}</td> -->
             </tr>
           </tbody>

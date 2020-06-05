@@ -23,7 +23,7 @@ const routes: Routes = [
     //ashish
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     // { path: 'booking', component: BookingComponent, canActivate: [AuthGuard] },
-    { path: 'booking/:id/:sor/:des',component: BookingDeatilsComponent },
+    { path: 'booking',component: BookingDeatilsComponent },
     { path: 'admin', component: AdminComponent ,canActivate: [AuthGuard]},
     { path: 'login', component: LoginCustomerComponent },
     { path: 'Register', component: RegisterCustomerComponent },

@@ -24,11 +24,11 @@ using System.Web.Http.Description;
 namespace Airline_Reservation.web.Controllers
 {
     /// <summary>
-    /// Controller for Bookings table that handles HTTP requests
+    /// Controller for Booking data table that handles HTTP requests
     /// </summary>
     public class BookingsController : ApiController
     {
-        //declare BookingsService type instance variable
+        //declaration of BookingsService type instance variable
         BookingsService bs;
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Airline_Reservation.web.Controllers
         /// </summary>
         public BookingsController()
         {
-            //declare CustomersService type instance variable
+            //declare BookingsService type instance variable
             bs = new BookingsService();
         }
 
@@ -44,8 +44,7 @@ namespace Airline_Reservation.web.Controllers
         /// Shows All Bookings from database
         /// </summary>
         /// <returns>Data from Booking Table</returns>
-
-        // GET: api/Bookings
+        /// GET: api/Bookings
         public List<Booking> GetBookings()
         {
             try
@@ -60,6 +59,11 @@ namespace Airline_Reservation.web.Controllers
             }
         }
 
+        /// <summary>
+        /// Get All bookings data from database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
 
         // GET: api/Bookings/5
         [ResponseType(typeof(Booking))]
@@ -86,12 +90,18 @@ namespace Airline_Reservation.web.Controllers
 
             else
             {
-                //throw user defined exception object 
-                throw new BookingsException("The entered details are not valid");
+                //throw user defined exception that entries are not in required format
+                throw new BookingsException("The entered details are not in required format");
             }
         }
 
 
+        /// <summary>
+        /// Update the booking data on existing booking id 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="booking"></param>
+        /// <returns></returns>
         // PUT: api/Bookings/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutBooking(int id, Booking booking)
@@ -105,8 +115,6 @@ namespace Airline_Reservation.web.Controllers
             {
                 return BadRequest();
             }
-
-
             try
             {
                 bs.UpdateBooking(id, booking);
@@ -121,7 +129,8 @@ namespace Airline_Reservation.web.Controllers
 
 
         /// <summary>
-        /// Takes booking data from user and matches with availible Flights.
+        ///  User enterd data for booking requirment and matches with availible Flights .
+        ///  If only flight found for avalible route then it done booking .
         /// </summary>
         /// <param name="booking"> booking details as bookingobject</param>
         /// <returns>Saves data to database</returns>
@@ -136,42 +145,47 @@ namespace Airline_Reservation.web.Controllers
                 try
                 {
 
-                    //Call AddFlight method to fetch all Flight
+                    //Call AddBooking method to fetch all Flight
                     int BookingId = bs.AddBooking(booking);
 
                     //return the response
                     return BookingId;
                 }
-                catch (FlightException)
+                catch (BookingsException)
                 {
-                    //rethrow
+                    //throw 
                     throw;
                 }
             }
             else
             {
-                //throw user defined exception object 
-                throw new BookingsException("The entered details are not valid");
+                //throw user defined exception
+                throw new BookingsException("Flight not available for this route, booking can not be done for your requirment");
             }
 
         }
 
-        // DELETE: api/Bookings/5
+        /// <summary>
+        /// Deletes booking by Id 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// DELETE: api/Bookings/5
         [ResponseType(typeof(Booking))]
         public bool DeleteBookingById(int id)
         {
             try
             {
 
-                //Call GetAlllight() to fetch all Flight
+                //Checks the booking Id and deletws data of it 
                 bool isDeleted = bs.DeleteBookingById(id);
 
                 //return the response
                 return isDeleted;
             }
-            catch (FlightException)
+            catch (BookingsException)
             {
-                //rethrow
+                   //rethrow
                 throw;
             }
         }

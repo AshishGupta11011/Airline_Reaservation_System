@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http.Description;
+
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -58,7 +59,7 @@ namespace Airline_Reservation.web.Services
         }
 
         ///// <summary>
-        ///// Method updates the details of existing cutomer's account details 
+        ///// Method updates the details of existing booking details 
         ///// </summary>
         ///// <param name="id"></param>
         ///// <param name="booking"></param>
@@ -93,7 +94,8 @@ namespace Airline_Reservation.web.Services
 
                         return true;
                     }
-                    else {
+                    else
+                    {
                         throw new BookingsException("Booking does not exist");
                     }
 
@@ -105,12 +107,24 @@ namespace Airline_Reservation.web.Services
 
             }
         }
-
+        /// <summary>
+        /// Checks if booking exists or not in th 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         private bool BookingExists(int id)
         {
-            using (AirlineDBEntities db = new AirlineDBEntities())
+            try
             {
-                return db.Bookings.Count(e => e.BookingId == id) > 0;
+                using (AirlineDBEntities db = new AirlineDBEntities())
+                {
+                    return db.Bookings.Count(e => e.BookingId == id) > 0;
+                }
+            }
+            catch (BookingsException)
+            {
+
+                throw;
             }
         }
 
@@ -120,58 +134,59 @@ namespace Airline_Reservation.web.Services
         /// <returns></returns>
         public int AddBooking(Booking booking)
         {
-            try { 
-            using (AirlineDBEntities db = new AirlineDBEntities())
+            try
             {
-                // Checks If there is destination and source is availible
-                Flight flight = db.Flights.Where<Flight>(
-                    f => booking.Destination.Equals(f.Destination)
-                    && booking.Source.Equals(f.Source)
-                    ).First();
-
-                // If data does not matches with flight data then it is null
-                if (flight == null)
+                using (AirlineDBEntities db = new AirlineDBEntities())
                 {
-                    throw new BookingsException("Invalid Details");
-                }
+                    // Checks If there is destination and source is availible
+                    Flight flight = db.Flights.Where<Flight>(
+                        f => booking.Destination.Equals(f.Destination)
+                        && booking.Source.Equals(f.Source)
+                        ).First();
 
-                // If AvailableSeats is less then user requuired seats then it does not stores data 
-                if (booking.NoOfSeats > flight.AvailableSeats)
-                {
-                    throw new BookingsException("Seats unavailable");
+                    // If data does not matches with flight data then it is null
+                    if (flight == null)
+                    {
+                        throw new BookingsException("Invalid Details");
+                    }
+
+                    // If AvailableSeats is less then user requuired seats then it does not stores data 
+                    if (booking.NoOfSeats > flight.AvailableSeats)
+                    {
+                        throw new BookingsException("Seats unavailable");
                     }
 
 
                     //Customer customer = db.Customers.Where<Customer>(
-                    //    c => booking.CustomerId.Equals(c.CustomerId) ).First();
+                    // c => booking.CustomerId.Equals(c.CustomerId) ).First();
 
                     booking.FlightId = flight.FlightId;
-                booking.CustomerId = 107;
-                // Counts Ticket Fare
-                booking.TicketFare = booking.NoOfSeats * 2000;
+                    booking.CustomerId = 100;
+                    // Counts Ticket Fare
+                    booking.TicketFare = booking.NoOfSeats * 2000;
 
-                // Sets Ticket Status
-                booking.TicketStatus = "NOTC";
+                    // Sets Ticket Status
+                    booking.TicketStatus = "NOTC";
 
-                //Adds booking data to booking table 
-                db.Bookings.Add(booking);
-                //Save all cahnges made in the context in database
-                db.SaveChanges();
-                return booking.BookingId;
+                    //Adds booking data to booking table 
+                    db.Bookings.Add(booking);
+                    //Save all cahnges made in the context in database
+                    db.SaveChanges();
+                    return booking.BookingId;
+                }
+
+
+             
             }
-
-
-
-        }
-        catch (Exception)
+            catch (Exception ex)
             {
-                //throw user defined FlightException
-                throw new BookingsException("not available");
+                //throw user defined BookingsException
+                throw new BookingsException("Flight not available for this route, booking can not be done for your requirment");
 
-    }
-}
+            }
+        }
 
-        internal int PostBooking(object flight)
+        internal int PostBooking(object booking)
         {
             throw new NotImplementedException();
         }
